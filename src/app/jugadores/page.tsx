@@ -9,20 +9,20 @@ export default async function PlayersPage() {
       <TableHeader>
         <TableRow>
           <TableHead>Nombre</TableHead>
-          <TableHead>Partidos</TableHead>
+          <TableHead className="text-center">Partidos</TableHead>
+          <TableHead className="text-center">Ganados</TableHead>
+          <TableHead className="text-center">Perdidos</TableHead>
           <TableHead className="text-center">Empatados</TableHead>
-          <TableHead className="text-right">Ganados</TableHead>
-          <TableHead className="text-right">Perdidos</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {players.map(({name, matches, ties, wins, losses}) => (
           <TableRow key={name}>
             <TableCell>{name}</TableCell>
-            <TableCell>{matches}</TableCell>
+            <TableCell className="text-center">{matches}</TableCell>
+            <TableCell className="text-center">{wins}</TableCell>
+            <TableCell className="text-center">{losses}</TableCell>
             <TableCell className="text-center">{ties}</TableCell>
-            <TableCell className="text-right">{wins}</TableCell>
-            <TableCell className="text-right">{losses}</TableCell>
           </TableRow>
         ))}
       </TableBody>
