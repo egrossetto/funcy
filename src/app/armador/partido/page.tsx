@@ -23,10 +23,12 @@ export default async function MatchPage({
         roster.find((player) => player.name === name) ?? {
           name,
           matches: 0,
-          score: 0,
+          ties: 0,
+          wins: 0,
+          losses: 0,
         },
     )
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => b.wins - a.wins);
   const team1: Player[] = [];
   const team2: Player[] = [];
 
@@ -50,19 +52,19 @@ export default async function MatchPage({
         {Array.from({length: Math.max(team1.length, team2.length)}).map((_, index) => (
           <TableRow key={index}>
             <TableCell>
-              {team1[index]?.name ? `${team1[index].name} (${team1[index].score})` : "-"}
+              {team1[index]?.name ? `${team1[index].name} (${team1[index].wins})` : "-"}
             </TableCell>
             <TableCell className="text-right">
-              {team2[index]?.name ? `${team2[index].name} (${team2[index].score})` : "-"}
+              {team2[index]?.name ? `${team2[index].name} (${team2[index].wins})` : "-"}
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell>Total: {team1.reduce((total, player) => total + player.score, 0)}</TableCell>
+          <TableCell>Total: {team1.reduce((total, player) => total + player.wins, 0)}</TableCell>
           <TableCell className="text-right">
-            Total: {team2.reduce((total, player) => total + player.score, 0)}
+            Total: {team2.reduce((total, player) => total + player.wins, 0)}
           </TableCell>
         </TableRow>
       </TableFooter>
