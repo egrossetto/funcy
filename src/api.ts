@@ -52,9 +52,12 @@ const api = {
           const didTie: boolean = goals1 === goals2;
 
           player.matches++;
-          player.ties += didTie ? 1 : 0;
-          player.wins += didWin ? 1 : 0;
-          player.losses += !didWin ? 1 : 0;
+          if (didTie) {
+            player.ties += 1;
+          } else {
+            player.wins += didWin ? 1 : 0;
+            player.losses += !didWin ? 1 : 0;
+          }
 
           players.set(name, player);
         }
@@ -74,9 +77,12 @@ const api = {
           const didTie: boolean = goals2 === goals1;
 
           player.matches++;
-          player.ties += didTie ? 1 : 0;
-          player.wins += didWin ? 1 : 0;
-          player.losses += !didWin ? 1 : 0;
+          if (didTie) {
+            player.ties += 1;
+          } else {
+            player.wins += didWin ? 1 : 0;
+            player.losses += !didWin ? 1 : 0;
+          }
 
           players.set(name, player);
         }
