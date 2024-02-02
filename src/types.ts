@@ -9,5 +9,7 @@ export interface Match {
 export interface Player {
   name: string;
   matches: number;
-  score: number;
+  ties: number;
+  wins: number;
+  losses: number;
 }
