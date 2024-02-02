@@ -24,7 +24,13 @@ export default function BuilderPageClient({
     const formData = new FormData(event.currentTarget);
 
     setPlayers((players) =>
-      players.concat({name: formData.get("player") as string, score: 0, matches: 0}),
+      players.concat({
+        name: formData.get("player") as string,
+        matches: 0,
+        ties: 0,
+        wins: 0,
+        losses: 0,
+      }),
     );
 
     event.currentTarget.reset();
